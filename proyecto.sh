@@ -34,7 +34,30 @@ while getopts ":at" option; do
       echo "2. Buscar"
       echo "3. Eliminar información"
       echo "4. Leer base de información"
-      ;;
+      
+      read -p "Seleccione una opción (1/2/3/4): " opcion
+      case $opcion in
+          1)
+            read -p "Ingrese el concepto: " concepto
+            read -p "Ingrese la definición: " definicion
+
+            echo "[$concepto] .- $definicion" >> "$seccion.inf"
+            echo "Información agregada correctamente."
+            ;;
+          2)
+            
+            ;;
+          3)
+            
+            ;;
+          4)
+            
+            ;;
+          *)
+            echo "Opción no válida. Saliendo."
+            exit 1
+            ;;
+      esac
       
     t) 
       echo "Bienvenido a la guía rápida de metodologías tradicionales, para continuar seleccione un tema:"
