@@ -41,24 +41,37 @@ while getopts ":at" option; do
             read -p "Ingrese el concepto: " concepto
             read -p "Ingrese la definición: " definicion
 
-            echo "[$concepto] .- $definicion" >> "$seccion.inf"
+            echo "[$concepto] .- $definicion" >> "Informacion/$option/$seccion/$seccion.inf"
             echo "Información agregada correctamente."
             ;;
           2)
-            
+            read -p "Ingrese el identificador: " identificador
+
+            if grep -q "$identificador" "Informacion/$option/$seccion/$seccion.inf"; then
+              echo "Resultado de la búsqueda:"
+              grep "$identificador" "Informacion/$option/$seccion/$seccion.inf"
+            else
+              echo "Elemento no encontrado en el archivo."
+            fi
             ;;
           3)
-            
+            read -p "Ingrese el identificador del concepto a eliminar: " identificador
+
+            if sed -i "/\[$identificador\]/d" "Informacion/$option/$seccion/$seccion.inf"; then
+              echo "Concepto eliminado correctamente."
+            else
+              echo "El concepto no fue encontrado en el archivo."
+            fi
             ;;
           4)
-            
+            echo "Información agregada correctamente."
             ;;
           *)
             echo "Opción no válida. Saliendo."
             exit 1
             ;;
       esac
-      
+      ;;
     t) 
       echo "Bienvenido a la guía rápida de metodologías tradicionales, para continuar seleccione un tema:"
       echo "1. Cascada"
