@@ -16,7 +16,7 @@ while getopts ":at" option; do
 		  seccion="SCRUM"
 		  ;;
 		2)
-		  seccion="X.P."
+		  seccion="X.P"
 		  ;;
 		3)
 		  seccion="Kanban"
