@@ -63,8 +63,9 @@ while getopts ":at" option; do
               echo "El concepto no fue encontrado en el archivo."
             fi
             ;;
-          4)
-            echo "Información agregada correctamente."
+          4)if [ -e "Informacion/$option/$seccion/$seccion.inf" ]; then
+           	 cat "Informacion/$option/$seccion/$seccion.inf"
+	    fi
             ;;
           *)
             echo "Opción no válida. Saliendo."
